@@ -6,3 +6,6 @@ venv_pca/
 
 # ignore the vscode extensions
 .vscode/
+
+# ignore data
+archive/
