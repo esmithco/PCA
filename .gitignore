@@ -1,3 +1,8 @@
+# ignore the folder and file of mac to setting the icons
 .DS_Store
-venv/
-.venv/
+
+# ignore the python enviroment
+venv_pca/
+
+# ignore the vscode extensions
+.vscode/
