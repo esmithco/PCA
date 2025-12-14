@@ -19,6 +19,8 @@ def main():
     print('These are the percentage of each component')
     print([float(round(i,5)) for i in vc_p])
 
+    # Make a scree plot 
+    pca.screeplot()
     # Let's calculate the error to interpret the closeness
     err = pca.error_ca()
     print('This is the percentage of error:', err)

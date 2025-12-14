@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 import utils
 
 class PCA:
@@ -8,12 +9,15 @@ class PCA:
     def center_m(self):
         # Calculate the mean of each variable to centered the data, axis=0 columns
         self.data_mean = np.mean(self.data, axis=0, keepdims=True)
+        data_mean = self.data_mean 
+        std = self.data.std(axis=0,ddof=1)
 
         # total or rows
         self.total_r = self.data.shape[0]
 
         # Center the data
-        self.data_centered = self.data - self.data_mean
+        self.data_centered = (self.data - data_mean) / std
+        print(self.data_centered.shape)
 
     def cov_matrix(self):
         # Calculate the covariance matrix
@@ -48,6 +52,13 @@ class PCA:
         self.data_rebuild = self.new_data @ self.m_pca.T
         self.data_rebuild = self.data_rebuild + self.data_mean
         return np.sum(self.vals[len(self.vc):]) / np.sum(self.vals)
+    
+    def screeplot(self):
+        fig, ax = plt.subplots()
+        x_labels = [f'PC{str(i)}' for i in range(1,len(self.vc_p)+1)]
+        y_labels = self.vc_p
+        ax.bar(x_labels,y_labels)
+        plt.show()
     
     def fit_transform(self):
         # execute pipeline
