@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import utils
 
-class PCA:
+class PCA_b:
     def __init__(self, data):
         self.data = data
 
@@ -42,6 +42,7 @@ class PCA:
         self.vc, self.vc_p = utils.nin_vari(self.vals)
         # Create the matriz to change the base or to describe the data in the linear combination
         self.m_pca = self.vecs[:, :len(self.vc)] 
+        self.vals_2 = self.vals[:len(self.vc)] 
         return self.vc_p
 
     def new_data_cal(self):

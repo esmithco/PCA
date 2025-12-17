@@ -17,5 +17,5 @@ def nin_vari(ls):
         sm = sm + i
         vc_p.append(i/tl)
         vc.append(i)
-        if sm/tl >= 0.9:
+        if sm/tl >= 0.7:
             return vc, vc_p
